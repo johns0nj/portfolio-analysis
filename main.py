@@ -1,4 +1,4 @@
-# main.py
+# main.py #update 26/01/2025    
 from data_fetching import fetch_stock_data
 from data_processing import process_stock_data
 from calculations import calculate_portfolio_metrics, monte_carlo_simulation, calculate_portfolio_returns
