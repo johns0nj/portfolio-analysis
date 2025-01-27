@@ -121,42 +121,33 @@ def monte_carlo_simulation(processed_data, portfolio_weights, num_simulations=10
     try:
         logger.info(f"开始蒙特卡洛模拟，模拟次数：{num_simulations}")
         weights = np.array(list(portfolio_weights.values()))
-        price_data = pd.DataFrame()
         
         # 直接使用处理后的数据
-        for ticker, data in processed_data.items():
-            price_data[ticker] = data
-            
+        price_data = pd.DataFrame(processed_data)
+        
         daily_returns = price_data.pct_change().dropna()
         mean_returns = daily_returns.mean()
         cov_matrix = daily_returns.cov()
         
         simulation_results = np.zeros(num_simulations)
         for i in range(num_simulations):
-            if i % 200 == 0:  # Log progress every 200 simulations
-                logger.debug(f"Completed {i} simulations")
+            if i % 200 == 0:
+                logger.debug(f"完成 {i} 次模拟")
                 
             simulated_returns = np.random.multivariate_normal(mean_returns, cov_matrix, forecast_days)
             portfolio_simulated_returns = np.cumprod(np.dot(simulated_returns, weights) + 1)
             simulation_results[i] = portfolio_simulated_returns[-1]
         
-        logger.info("Monte Carlo simulation completed successfully")
+        logger.info("蒙特卡洛模拟完成")
         return simulation_results
         
     except Exception as e:
-        logger.error(f"Error in Monte Carlo simulation: {str(e)}")
+        logger.error(f"蒙特卡洛模拟出错: {str(e)}")
         raise
 
 def calculate_portfolio_metrics(processed_data, portfolio_weights):
     """
     计算投资组合的关键指标
-    
-    Args:
-        processed_data (dict): 处理后的股票数据
-        portfolio_weights (dict): 投资组合权重
-        
-    Returns:
-        dict: 包含计算出的各项指标
     """
     metrics = {}
     portfolio_returns = calculate_portfolio_returns(processed_data, portfolio_weights)
@@ -167,8 +158,7 @@ def calculate_portfolio_metrics(processed_data, portfolio_weights):
     # 获取基准数据并处理
     try:
         benchmark_data = fetch_stock_data(['^GSPC'], portfolio_returns.index[0], portfolio_returns.index[-1])
-        benchmark_prices = benchmark_data['^GSPC'].get('Close', benchmark_data['^GSPC']['Adj Close'])
-        benchmark_returns = benchmark_prices.pct_change().dropna()
+        benchmark_returns = benchmark_data['^GSPC'].pct_change().dropna()
         
         # 对齐日期
         aligned_returns = pd.concat([portfolio_returns, benchmark_returns], axis=1).dropna()

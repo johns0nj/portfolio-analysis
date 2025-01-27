@@ -12,47 +12,47 @@ This module provides functions for plotting various aspects of portfolio
 performance, including returns, efficient frontier, and Monte Carlo simulations.
 """
 
-def plot_portfolio_performance(portfolio_returns):
+def plot_portfolio_performance(portfolio_returns, benchmark_returns=None):
     """
-    Plots the cumulative performance of the portfolio over time.
-
+    绘制投资组合表现，包括与基准的对比
+    
     Args:
-        portfolio_returns (pandas.Series): Daily portfolio returns with datetime index.
-
-    Notes:
-        - Displays cumulative returns starting from an initial value of 1
-        - Includes date axis and grid for better readability
+        portfolio_returns (pd.Series): 投资组合收益率
+        benchmark_returns (pd.Series, optional): 基准收益率
     """
-    cumulative_returns = (1 + portfolio_returns).cumprod()
     plt.figure(figsize=(12, 6))
-    plt.plot(cumulative_returns.index, cumulative_returns, label='Portfolio')
+    
+    # 计算累积收益
+    portfolio_cumulative = (1 + portfolio_returns).cumprod()
+    plt.plot(portfolio_cumulative.index, portfolio_cumulative.values, 
+            label='Portfolio', linewidth=2)
+    
+    if benchmark_returns is not None:
+        benchmark_cumulative = (1 + benchmark_returns).cumprod()
+        plt.plot(benchmark_cumulative.index, benchmark_cumulative.values, 
+                label='S&P 500', linewidth=2, linestyle='--')
+    
+    plt.title('Portfolio Performance vs Benchmark')
     plt.xlabel('Date')
-    plt.ylabel('Cumulative Returns')
-    plt.title('Portfolio Performance Over Time')
-    plt.legend()
+    plt.ylabel('Cumulative Return')
     plt.grid(True)
-    plt.show()
+    plt.legend()
+    plt.tight_layout()
+    plt.savefig('portfolio_performance.png')
+    plt.close()
 
 def plot_efficient_frontier(processed_data, num_portfolios=5000, risk_free_rate=0.01):
     """
-    Plots the efficient frontier showing risk-return tradeoff of random portfolios.
-
-    Args:
-        processed_data (dict): Dictionary of processed stock data.
-        num_portfolios (int, optional): Number of random portfolios to generate.
-            Defaults to 5000.
-        risk_free_rate (float, optional): Annual risk-free rate. Defaults to 0.01.
-
-    Raises:
-        ValueError: If unable to generate efficient frontier due to invalid data.
+    绘制有效前沿
     """
     logger = logging.getLogger('portfolio_analyzer')
     
     try:
-        logger.debug(f"Generating efficient frontier with {num_portfolios} portfolios")
+        logger.debug(f"生成有效前沿，模拟 {num_portfolios} 个组合")
         price_data = pd.DataFrame()
         for ticker, data in processed_data.items():
-            price_data[ticker] = data['Adj Close']
+            # 直接使用处理后的数据
+            price_data[ticker] = data
         
         daily_returns = price_data.pct_change().dropna()
         mean_returns = daily_returns.mean()
@@ -97,20 +97,15 @@ def plot_efficient_frontier(processed_data, num_portfolios=5000, risk_free_rate=
 
 def plot_individual_assets(processed_data):
     """
-    Creates a scatter plot of individual assets' risk-return characteristics.
-
+    绘制个股风险收益特征
+    
     Args:
-        processed_data (dict): Dictionary of processed stock data with ticker
-            symbols as keys and pandas DataFrames as values.
-
-    Notes:
-        - Plots annualized return vs. annualized volatility for each asset
-        - Labels each point with the corresponding ticker symbol
-        - Assumes 252 trading days for annualization
+        processed_data (dict): 处理后的股票数据
     """
     price_data = pd.DataFrame()
     for ticker, data in processed_data.items():
-        price_data[ticker] = data['Adj Close']
+        # 直接使用处理后的数据
+        price_data[ticker] = data
     
     daily_returns = price_data.pct_change().dropna()
     mean_returns = daily_returns.mean() * 252
@@ -118,13 +113,20 @@ def plot_individual_assets(processed_data):
     
     plt.figure(figsize=(10, 7))
     plt.scatter(volatilities, mean_returns, marker='o', s=100)
+    
     for i, ticker in enumerate(mean_returns.index):
-        plt.annotate(ticker, (volatilities.iloc[i], mean_returns.iloc[i]), textcoords="offset points", xytext=(0,10), ha='center')
-    plt.xlabel('Volatility (Std. Deviation)')
-    plt.ylabel('Expected Return')
-    plt.title('Risk vs Return of Individual Assets')
+        plt.annotate(ticker, 
+                    (volatilities[i], mean_returns[i]), 
+                    textcoords="offset points", 
+                    xytext=(0,10), 
+                    ha='center')
+    
+    plt.xlabel('波动率 (标准差)')
+    plt.ylabel('预期收益率')
+    plt.title('个股风险收益分析')
     plt.grid(True)
-    plt.show()
+    plt.savefig('individual_assets.png')
+    plt.close()
 
 def plot_monte_carlo_results(simulation_results, initial_investment=10000):
     """

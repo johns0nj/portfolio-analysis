@@ -10,6 +10,7 @@ from visualization import (
     plot_return_distribution
 )
 from logger_config import setup_logger
+import numpy as np
 
 """
 Main module for portfolio analysis application.
@@ -41,7 +42,7 @@ def main():
         # User inputs
         portfolio = {'AAPL': 0.4, 'MSFT': 0.3, 'GOOGL': 0.3}
         start_date = '2020-01-01'
-        end_date = '2023-10-01'
+        end_date = '2024-12-31'
         
         logger.info(f"Analyzing portfolio: {portfolio}")
         logger.info(f"Time period: {start_date} to {end_date}")
@@ -49,6 +50,15 @@ def main():
         # Fetch data
         logger.debug("Fetching stock data...")
         raw_data = fetch_stock_data(list(portfolio.keys()), start_date, end_date)
+        
+        # 获取基准数据
+        logger.debug("Fetching benchmark data...")
+        try:
+            benchmark_data = fetch_stock_data(['^GSPC'], start_date, end_date)
+            benchmark_returns = benchmark_data['^GSPC'].pct_change().dropna()
+        except Exception as e:
+            logger.warning(f"无法获取基准数据: {str(e)}")
+            benchmark_returns = None
 
         # Process data
         logger.debug("Processing stock data...")
@@ -59,6 +69,23 @@ def main():
         metrics = calculate_portfolio_metrics(processed_data, portfolio)
         portfolio_returns = calculate_portfolio_returns(processed_data, portfolio)
         
+        # 计算相对基准的表现
+        if benchmark_returns is not None:
+            try:
+                excess_return = (portfolio_returns.mean() - benchmark_returns.mean()) * 252
+                tracking_error = (portfolio_returns - benchmark_returns).std() * np.sqrt(252)
+                information_ratio = excess_return / float(tracking_error) if tracking_error > 0 else None
+            except Exception as e:
+                logger.warning(f"计算相对基准表现时出错: {str(e)}")
+                excess_return = tracking_error = information_ratio = None
+        else:
+            excess_return = tracking_error = information_ratio = None
+        
+        # 添加新的指标
+        metrics['Excess Return'] = excess_return
+        metrics['Tracking Error'] = tracking_error
+        metrics['Information Ratio'] = information_ratio
+        
         logger.info("Portfolio Metrics:")
         for key, value in metrics.items():
             if value is None:
@@ -68,7 +95,7 @@ def main():
 
         # Visualizations
         logger.debug("Generating visualizations...")
-        plot_portfolio_performance(portfolio_returns)
+        plot_portfolio_performance(portfolio_returns, benchmark_returns)  # 添加基准对比
         plot_individual_assets(processed_data)
         plot_efficient_frontier(processed_data)
         plot_return_distribution(portfolio_returns)

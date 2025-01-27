@@ -373,3 +373,313 @@ Traceback (most recent call last):
   File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
     raise KeyError(key) from err
 KeyError: 'Adj Close'
+2025-01-27 22:54:57,409 - portfolio_analyzer - INFO - Starting portfolio analysis
+2025-01-27 22:54:57,409 - portfolio_analyzer - INFO - Analyzing portfolio: {'AAPL': 0.4, 'MSFT': 0.3, 'GOOGL': 0.3}
+2025-01-27 22:54:57,410 - portfolio_analyzer - INFO - Time period: 2020-01-01 to 2023-10-01
+2025-01-27 22:54:57,410 - portfolio_analyzer - DEBUG - Fetching stock data...
+2025-01-27 22:54:59,020 - portfolio_analyzer - DEBUG - Processing stock data...
+2025-01-27 22:54:59,022 - portfolio_analyzer - DEBUG - Calculating portfolio metrics...
+2025-01-27 22:54:59,286 - portfolio_analyzer - INFO - Portfolio Metrics:
+2025-01-27 22:54:59,287 - portfolio_analyzer - INFO - Expected Return: 0.2574
+2025-01-27 22:54:59,287 - portfolio_analyzer - INFO - Volatility: 0.3102
+2025-01-27 22:54:59,288 - portfolio_analyzer - INFO - Sharpe Ratio: 0.7975
+2025-01-27 22:54:59,289 - portfolio_analyzer - INFO - Beta: Not available
+2025-01-27 22:54:59,289 - portfolio_analyzer - INFO - VaR: nan
+2025-01-27 22:54:59,290 - portfolio_analyzer - DEBUG - Generating visualizations...
+2025-01-27 22:57:36,915 - portfolio_analyzer - ERROR - An error occurred during portfolio analysis: 'Adj Close'
+Traceback (most recent call last):
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\indexes\base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'Adj Close'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\zougu\OneDrive\main\Dell NB\portfolio_analysis\main.py", line 72, in main
+    plot_individual_assets(processed_data)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\zougu\OneDrive\main\Dell NB\portfolio_analysis\visualization.py", line 113, in plot_individual_assets
+    price_data[ticker] = data['Adj Close']
+                         ~~~~^^^^^^^^^^^^^
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'Adj Close'
+2025-01-27 22:58:09,988 - portfolio_analyzer - INFO - Starting portfolio analysis
+2025-01-27 22:58:09,988 - portfolio_analyzer - INFO - Analyzing portfolio: {'AAPL': 0.4, 'MSFT': 0.3, 'GOOGL': 0.3}
+2025-01-27 22:58:09,989 - portfolio_analyzer - INFO - Time period: 2020-01-01 to 2024-12-31
+2025-01-27 22:58:09,989 - portfolio_analyzer - DEBUG - Fetching stock data...
+2025-01-27 22:58:11,570 - portfolio_analyzer - DEBUG - Processing stock data...
+2025-01-27 22:58:11,572 - portfolio_analyzer - DEBUG - Calculating portfolio metrics...
+2025-01-27 22:58:11,793 - portfolio_analyzer - INFO - Portfolio Metrics:
+2025-01-27 22:58:11,794 - portfolio_analyzer - INFO - Expected Return: 0.2730
+2025-01-27 22:58:11,795 - portfolio_analyzer - INFO - Volatility: 0.2840
+2025-01-27 22:58:11,796 - portfolio_analyzer - INFO - Sharpe Ratio: 0.9259
+2025-01-27 22:58:11,796 - portfolio_analyzer - INFO - Beta: Not available
+2025-01-27 22:58:11,797 - portfolio_analyzer - INFO - VaR: nan
+2025-01-27 22:58:11,797 - portfolio_analyzer - DEBUG - Generating visualizations...
+2025-01-27 22:58:19,429 - portfolio_analyzer - ERROR - An error occurred during portfolio analysis: 'Adj Close'
+Traceback (most recent call last):
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\indexes\base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'Adj Close'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\zougu\OneDrive\main\Dell NB\portfolio_analysis\main.py", line 72, in main
+    plot_individual_assets(processed_data)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\zougu\OneDrive\main\Dell NB\portfolio_analysis\visualization.py", line 113, in plot_individual_assets
+    price_data[ticker] = data['Adj Close']
+                         ~~~~^^^^^^^^^^^^^
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'Adj Close'
+2025-01-27 22:59:32,855 - portfolio_analyzer - INFO - Starting portfolio analysis
+2025-01-27 22:59:32,856 - portfolio_analyzer - INFO - Analyzing portfolio: {'AAPL': 0.4, 'MSFT': 0.3, 'GOOGL': 0.3}
+2025-01-27 22:59:32,856 - portfolio_analyzer - INFO - Time period: 2020-01-01 to 2024-12-31
+2025-01-27 22:59:32,856 - portfolio_analyzer - DEBUG - Fetching stock data...
+2025-01-27 22:59:34,244 - portfolio_analyzer - DEBUG - Fetching benchmark data...
+2025-01-27 22:59:34,401 - portfolio_analyzer - ERROR - An error occurred during portfolio analysis: 'Adj Close'
+Traceback (most recent call last):
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\indexes\base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'Adj Close'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\zougu\OneDrive\main\Dell NB\portfolio_analysis\main.py", line 57, in main
+    benchmark_prices = benchmark_data['^GSPC'].get('Close', benchmark_data['^GSPC']['Adj Close'])
+                                                            ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\frame.py", line 4101, in __getitem__
+    return self._getitem_multilevel(key)
+           ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\frame.py", line 4159, in _getitem_multilevel
+    loc = self.columns.get_loc(key)
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\indexes\multi.py", line 3040, in get_loc
+    loc = self._get_level_indexer(key, level=0)
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\indexes\multi.py", line 3391, in _get_level_indexer
+    idx = self._get_loc_single_level_index(level_index, key)
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\indexes\multi.py", line 2980, in _get_loc_single_level_index
+    return level_index.get_loc(key)
+           ~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'Adj Close'
+2025-01-27 22:59:51,021 - portfolio_analyzer - INFO - Starting portfolio analysis
+2025-01-27 22:59:51,021 - portfolio_analyzer - INFO - Analyzing portfolio: {'AAPL': 0.4, 'MSFT': 0.3, 'GOOGL': 0.3}
+2025-01-27 22:59:51,022 - portfolio_analyzer - INFO - Time period: 2020-01-01 to 2024-12-31
+2025-01-27 22:59:51,022 - portfolio_analyzer - DEBUG - Fetching stock data...
+2025-01-27 22:59:52,300 - portfolio_analyzer - DEBUG - Fetching benchmark data...
+2025-01-27 22:59:52,557 - portfolio_analyzer - ERROR - An error occurred during portfolio analysis: 'Adj Close'
+Traceback (most recent call last):
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\indexes\base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'Adj Close'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\zougu\OneDrive\main\Dell NB\portfolio_analysis\main.py", line 57, in main
+    benchmark_prices = benchmark_data['^GSPC'].get('Close', benchmark_data['^GSPC']['Adj Close'])
+                                                            ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\frame.py", line 4101, in __getitem__
+    return self._getitem_multilevel(key)
+           ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\frame.py", line 4159, in _getitem_multilevel
+    loc = self.columns.get_loc(key)
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\indexes\multi.py", line 3040, in get_loc
+    loc = self._get_level_indexer(key, level=0)
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\indexes\multi.py", line 3391, in _get_level_indexer
+    idx = self._get_loc_single_level_index(level_index, key)
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\indexes\multi.py", line 2980, in _get_loc_single_level_index
+    return level_index.get_loc(key)
+           ~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'Adj Close'
+2025-01-27 23:00:26,307 - portfolio_analyzer - INFO - Starting portfolio analysis
+2025-01-27 23:00:26,307 - portfolio_analyzer - INFO - Analyzing portfolio: {'AAPL': 0.4, 'MSFT': 0.3, 'GOOGL': 0.3}
+2025-01-27 23:00:26,308 - portfolio_analyzer - INFO - Time period: 2020-01-01 to 2024-12-31
+2025-01-27 23:00:26,308 - portfolio_analyzer - DEBUG - Fetching stock data...
+2025-01-27 23:00:27,521 - portfolio_analyzer - DEBUG - Fetching benchmark data...
+2025-01-27 23:00:27,688 - portfolio_analyzer - ERROR - An error occurred during portfolio analysis: 'Adj Close'
+Traceback (most recent call last):
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\indexes\base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'Adj Close'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\zougu\OneDrive\main\Dell NB\portfolio_analysis\main.py", line 57, in main
+    benchmark_prices = benchmark_data['^GSPC'].get('Close', benchmark_data['^GSPC']['Adj Close'])
+                                                            ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\frame.py", line 4101, in __getitem__
+    return self._getitem_multilevel(key)
+           ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\frame.py", line 4159, in _getitem_multilevel
+    loc = self.columns.get_loc(key)
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\indexes\multi.py", line 3040, in get_loc
+    loc = self._get_level_indexer(key, level=0)
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\indexes\multi.py", line 3391, in _get_level_indexer
+    idx = self._get_loc_single_level_index(level_index, key)
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\indexes\multi.py", line 2980, in _get_loc_single_level_index
+    return level_index.get_loc(key)
+           ~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'Adj Close'
+2025-01-27 23:01:10,614 - portfolio_analyzer - INFO - Starting portfolio analysis
+2025-01-27 23:01:10,615 - portfolio_analyzer - INFO - Analyzing portfolio: {'AAPL': 0.4, 'MSFT': 0.3, 'GOOGL': 0.3}
+2025-01-27 23:01:10,615 - portfolio_analyzer - INFO - Time period: 2020-01-01 to 2024-12-31
+2025-01-27 23:01:10,616 - portfolio_analyzer - DEBUG - Fetching stock data...
+2025-01-27 23:01:12,091 - portfolio_analyzer - DEBUG - Fetching benchmark data...
+2025-01-27 23:01:12,317 - portfolio_analyzer - DEBUG - Processing stock data...
+2025-01-27 23:01:12,317 - portfolio_analyzer - ERROR - An error occurred during portfolio analysis: 'Close'
+Traceback (most recent call last):
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\indexes\base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'Close'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\zougu\OneDrive\main\Dell NB\portfolio_analysis\main.py", line 65, in main
+    processed_data = process_stock_data(raw_data)
+  File "C:\Users\zougu\OneDrive\main\Dell NB\portfolio_analysis\data_processing.py", line 26, in process_stock_data
+    processed_data[ticker] = data['Close'].copy()
+                             ~~~~^^^^^^^^^
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'Close'
+2025-01-27 23:01:48,520 - portfolio_analyzer - INFO - Starting portfolio analysis
+2025-01-27 23:01:48,521 - portfolio_analyzer - INFO - Analyzing portfolio: {'AAPL': 0.4, 'MSFT': 0.3, 'GOOGL': 0.3}
+2025-01-27 23:01:48,521 - portfolio_analyzer - INFO - Time period: 2020-01-01 to 2024-12-31
+2025-01-27 23:01:48,522 - portfolio_analyzer - DEBUG - Fetching stock data...
+2025-01-27 23:01:49,843 - portfolio_analyzer - DEBUG - Fetching benchmark data...
+2025-01-27 23:01:50,045 - portfolio_analyzer - DEBUG - Processing stock data...
+2025-01-27 23:01:50,047 - portfolio_analyzer - DEBUG - Calculating portfolio metrics...
+2025-01-27 23:01:50,330 - portfolio_analyzer - ERROR - An error occurred during portfolio analysis: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+Traceback (most recent call last):
+  File "C:\Users\zougu\OneDrive\main\Dell NB\portfolio_analysis\main.py", line 76, in main
+    information_ratio = excess_return / tracking_error if tracking_error != 0 else None
+                                                          ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\generic.py", line 1577, in __nonzero__
+    raise ValueError(
+    ...<2 lines>...
+    )
+ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2025-01-27 23:03:11,598 - portfolio_analyzer - INFO - Starting portfolio analysis
+2025-01-27 23:03:11,599 - portfolio_analyzer - INFO - Analyzing portfolio: {'AAPL': 0.4, 'MSFT': 0.3, 'GOOGL': 0.3}
+2025-01-27 23:03:11,599 - portfolio_analyzer - INFO - Time period: 2020-01-01 to 2024-12-31
+2025-01-27 23:03:11,600 - portfolio_analyzer - DEBUG - Fetching stock data...
+2025-01-27 23:03:12,910 - portfolio_analyzer - DEBUG - Fetching benchmark data...
+2025-01-27 23:03:13,095 - portfolio_analyzer - DEBUG - Processing stock data...
+2025-01-27 23:03:13,096 - portfolio_analyzer - DEBUG - Calculating portfolio metrics...
+2025-01-27 23:03:13,375 - portfolio_analyzer - WARNING - 计算相对基准表现时出错: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2025-01-27 23:03:13,377 - portfolio_analyzer - INFO - Portfolio Metrics:
+2025-01-27 23:03:13,377 - portfolio_analyzer - INFO - Expected Return: 0.2730
+2025-01-27 23:03:13,377 - portfolio_analyzer - INFO - Volatility: 0.2840
+2025-01-27 23:03:13,378 - portfolio_analyzer - INFO - Sharpe Ratio: 0.9259
+2025-01-27 23:03:13,378 - portfolio_analyzer - INFO - Beta: 1.1613
+2025-01-27 23:03:13,378 - portfolio_analyzer - INFO - VaR: nan
+2025-01-27 23:03:13,379 - portfolio_analyzer - INFO - Excess Return: Not available
+2025-01-27 23:03:13,379 - portfolio_analyzer - INFO - Tracking Error: Not available
+2025-01-27 23:03:13,380 - portfolio_analyzer - INFO - Information Ratio: Not available
+2025-01-27 23:03:13,380 - portfolio_analyzer - DEBUG - Generating visualizations...
+2025-01-27 23:03:14,135 - portfolio_analyzer - DEBUG - 生成有效前沿，模拟 5000 个组合
+2025-01-27 23:03:15,229 - portfolio_analyzer - DEBUG - Efficient frontier plot generated successfully
+2025-01-27 23:03:42,736 - portfolio_analyzer - DEBUG - Running Monte Carlo simulation...
+2025-01-27 23:03:42,736 - portfolio_analyzer - INFO - 开始蒙特卡洛模拟，模拟次数：1000
+2025-01-27 23:03:42,737 - portfolio_analyzer - ERROR - 蒙特卡洛模拟出错: If using all scalar values, you must pass an index
+2025-01-27 23:03:42,737 - portfolio_analyzer - ERROR - An error occurred during portfolio analysis: If using all scalar values, you must pass an index
+Traceback (most recent call last):
+  File "C:\Users\zougu\OneDrive\main\Dell NB\portfolio_analysis\main.py", line 105, in main
+    simulation_results = monte_carlo_simulation(processed_data, portfolio)
+  File "C:\Users\zougu\OneDrive\main\Dell NB\portfolio_analysis\calculations.py", line 126, in monte_carlo_simulation
+    price_data = pd.DataFrame(processed_data)
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\frame.py", line 778, in __init__
+    mgr = dict_to_mgr(data, index, columns, dtype=dtype, copy=copy, typ=manager)
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\internals\construction.py", line 503, in dict_to_mgr
+    return arrays_to_mgr(arrays, columns, index, dtype=dtype, typ=typ, consolidate=copy)
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\internals\construction.py", line 114, in arrays_to_mgr
+    index = _extract_index(arrays)
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\internals\construction.py", line 667, in _extract_index
+    raise ValueError("If using all scalar values, you must pass an index")
+ValueError: If using all scalar values, you must pass an index
+2025-01-27 23:04:13,503 - portfolio_analyzer - INFO - Starting portfolio analysis
+2025-01-27 23:04:13,504 - portfolio_analyzer - INFO - Analyzing portfolio: {'AAPL': 0.4, 'MSFT': 0.3, 'GOOGL': 0.3}
+2025-01-27 23:04:13,504 - portfolio_analyzer - INFO - Time period: 2020-01-01 to 2024-12-31
+2025-01-27 23:04:13,504 - portfolio_analyzer - DEBUG - Fetching stock data...
+2025-01-27 23:04:14,867 - portfolio_analyzer - DEBUG - Fetching benchmark data...
+2025-01-27 23:04:15,066 - portfolio_analyzer - DEBUG - Processing stock data...
+2025-01-27 23:04:15,068 - portfolio_analyzer - DEBUG - Calculating portfolio metrics...
+2025-01-27 23:04:15,330 - portfolio_analyzer - WARNING - 计算相对基准表现时出错: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2025-01-27 23:04:15,331 - portfolio_analyzer - INFO - Portfolio Metrics:
+2025-01-27 23:04:15,331 - portfolio_analyzer - INFO - Expected Return: 0.2730
+2025-01-27 23:04:15,332 - portfolio_analyzer - INFO - Volatility: 0.2840
+2025-01-27 23:04:15,332 - portfolio_analyzer - INFO - Sharpe Ratio: 0.9259
+2025-01-27 23:04:15,332 - portfolio_analyzer - INFO - Beta: 1.1613
+2025-01-27 23:04:15,333 - portfolio_analyzer - INFO - VaR: nan
+2025-01-27 23:04:15,333 - portfolio_analyzer - INFO - Excess Return: Not available
+2025-01-27 23:04:15,333 - portfolio_analyzer - INFO - Tracking Error: Not available
+2025-01-27 23:04:15,334 - portfolio_analyzer - INFO - Information Ratio: Not available
+2025-01-27 23:04:15,334 - portfolio_analyzer - DEBUG - Generating visualizations...
+2025-01-27 23:04:16,019 - portfolio_analyzer - DEBUG - 生成有效前沿，模拟 5000 个组合
+2025-01-27 23:04:17,105 - portfolio_analyzer - DEBUG - Efficient frontier plot generated successfully
+2025-01-27 23:04:21,412 - portfolio_analyzer - DEBUG - Running Monte Carlo simulation...
+2025-01-27 23:04:21,413 - portfolio_analyzer - INFO - 开始蒙特卡洛模拟，模拟次数：1000
+2025-01-27 23:04:21,413 - portfolio_analyzer - ERROR - 蒙特卡洛模拟出错: If using all scalar values, you must pass an index
+2025-01-27 23:04:21,414 - portfolio_analyzer - ERROR - An error occurred during portfolio analysis: If using all scalar values, you must pass an index
+Traceback (most recent call last):
+  File "C:\Users\zougu\OneDrive\main\Dell NB\portfolio_analysis\main.py", line 105, in main
+    simulation_results = monte_carlo_simulation(processed_data, portfolio)
+  File "C:\Users\zougu\OneDrive\main\Dell NB\portfolio_analysis\calculations.py", line 126, in monte_carlo_simulation
+    price_data = pd.DataFrame(processed_data)
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\frame.py", line 778, in __init__
+    mgr = dict_to_mgr(data, index, columns, dtype=dtype, copy=copy, typ=manager)
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\internals\construction.py", line 503, in dict_to_mgr
+    return arrays_to_mgr(arrays, columns, index, dtype=dtype, typ=typ, consolidate=copy)
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\internals\construction.py", line 114, in arrays_to_mgr
+    index = _extract_index(arrays)
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\internals\construction.py", line 667, in _extract_index
+    raise ValueError("If using all scalar values, you must pass an index")
+ValueError: If using all scalar values, you must pass an index

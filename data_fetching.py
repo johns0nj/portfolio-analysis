@@ -1,5 +1,6 @@
 # data_fetching.py
 import yfinance as yf
+import logging
 
 """
 Module for fetching stock data from various financial data sources.
@@ -10,22 +11,25 @@ using the yfinance API.
 
 def fetch_stock_data(ticker_list, start_date, end_date):
     """
-    Fetches historical stock data for given tickers within a date range.
-
+    获取股票数据
+    
     Args:
-        ticker_list (list): List of stock ticker symbols.
-        start_date (str): Start date in 'YYYY-MM-DD' format.
-        end_date (str): End date in 'YYYY-MM-DD' format.
-
+        ticker_list (list): 股票代码列表
+        start_date (str): 开始日期
+        end_date (str): 结束日期
+        
     Returns:
-        dict: Dictionary with ticker symbols as keys and pandas DataFrames containing
-            stock data as values.
-
-    Raises:
-        yfinance.YFinanceError: If there's an error fetching data from Yahoo Finance.
+        dict: 包含股票数据的字典
     """
     data = {}
     for ticker in ticker_list:
-        stock_data = yf.download(ticker, start=start_date, end=end_date)
-        data[ticker] = stock_data
+        try:
+            stock = yf.download(ticker, start=start_date, end=end_date)
+            if 'Adj Close' in stock.columns:
+                data[ticker] = stock['Adj Close']
+            else:
+                data[ticker] = stock['Close']
+        except Exception as e:
+            logging.warning(f"获取 {ticker} 数据时出错: {str(e)}")
+            continue
     return data
