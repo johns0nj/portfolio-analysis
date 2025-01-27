@@ -54,6 +54,8 @@ def main():
         logger.debug("Processing stock data...")
         processed_data = process_stock_data(raw_data)
 
+        print(processed_data.head())
+
         # Calculate metrics
         logger.debug("Calculating portfolio metrics...")
         metrics = calculate_portfolio_metrics(processed_data, portfolio)
