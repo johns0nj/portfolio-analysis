@@ -203,3 +203,4 @@ def calculate_portfolio_metrics(processed_data, portfolio_weights):
     metrics['VaR'] = calculate_var(portfolio_returns)
     
     return metrics
+ 
