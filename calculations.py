@@ -13,36 +13,28 @@ including returns, volatility, Sharpe ratio, and Monte Carlo simulations.
 
 def calculate_portfolio_returns(processed_data, portfolio_weights):
     """
-    Calculates daily returns for a portfolio given stock data and weights.
-
-    Args:
-        processed_data (dict): Dictionary of processed stock data with ticker
-            symbols as keys and pandas DataFrames as values.
-        portfolio_weights (dict): Dictionary of portfolio weights with ticker
-            symbols as keys and weights as values.
-
-    Returns:
-        pandas.Series: Daily portfolio returns.
-
-    Raises:
-        ValueError: If portfolio weights don't sum to 1 or if data is missing.
-    """
-    logger = logging.getLogger('portfolio_analyzer')
+    计算投资组合收益率
     
-    try:
-        weights = pd.Series(portfolio_weights)
-        price_data = pd.DataFrame()
-        for ticker, data in processed_data.items():
-            price_data[ticker] = data['Adj Close']
-        daily_returns = price_data.pct_change().dropna()
-        portfolio_returns = daily_returns.dot(weights)
+    Args:
+        processed_data (dict): 已处理的股票数据
+        portfolio_weights (dict): 投资组合权重
         
-        logger.debug(f"Calculated portfolio returns with shape: {portfolio_returns.shape}")
-        return portfolio_returns
+    Returns:
+        pd.Series: 投资组合的收益率序列
+    """
+    price_data = pd.DataFrame()
+    
+    # 直接使用处理后的数据，因为它已经只包含了我们需要的价格数据
+    for ticker, data in processed_data.items():
+        price_data[ticker] = data  # 不再需要访问 'Adj Close'
         
-    except Exception as e:
-        logger.error(f"Error calculating portfolio returns: {str(e)}")
-        raise
+    # 计算收益率
+    returns = price_data.pct_change()
+    
+    # 计算投资组合收益率
+    portfolio_returns = returns.dot(pd.Series(portfolio_weights))
+    
+    return portfolio_returns
 
 def calculate_portfolio_volatility(portfolio_returns):
     """
@@ -122,28 +114,18 @@ def calculate_var(portfolio_returns, confidence_level=0.05):
 
 def monte_carlo_simulation(processed_data, portfolio_weights, num_simulations=1000, forecast_days=252):
     """
-    Performs Monte Carlo simulation to forecast potential portfolio outcomes.
-
-    Args:
-        processed_data (dict): Dictionary of processed stock data.
-        portfolio_weights (dict): Dictionary of portfolio weights.
-        num_simulations (int, optional): Number of simulation runs. Defaults to 1000.
-        forecast_days (int, optional): Number of days to forecast. Defaults to 252.
-
-    Returns:
-        numpy.ndarray: Array of simulation results representing final portfolio values.
-
-    Raises:
-        ValueError: If input data is invalid or missing.
+    进行蒙特卡洛模拟
     """
     logger = logging.getLogger('portfolio_analyzer')
     
     try:
-        logger.info(f"Starting Monte Carlo simulation with {num_simulations} simulations")
+        logger.info(f"开始蒙特卡洛模拟，模拟次数：{num_simulations}")
         weights = np.array(list(portfolio_weights.values()))
         price_data = pd.DataFrame()
+        
+        # 直接使用处理后的数据
         for ticker, data in processed_data.items():
-            price_data[ticker] = data['Adj Close']
+            price_data[ticker] = data
             
         daily_returns = price_data.pct_change().dropna()
         mean_returns = daily_returns.mean()
@@ -167,22 +149,14 @@ def monte_carlo_simulation(processed_data, portfolio_weights, num_simulations=10
 
 def calculate_portfolio_metrics(processed_data, portfolio_weights):
     """
-    Calculates key portfolio metrics including returns, volatility, and risk measures.
-
+    计算投资组合的关键指标
+    
     Args:
-        processed_data (dict): Dictionary of processed stock data.
-        portfolio_weights (dict): Dictionary of portfolio weights.
-
+        processed_data (dict): 处理后的股票数据
+        portfolio_weights (dict): 投资组合权重
+        
     Returns:
-        dict: Dictionary containing calculated metrics:
-            - Expected Return (float): Annualized expected return
-            - Volatility (float): Annualized volatility
-            - Sharpe Ratio (float): Risk-adjusted return measure
-            - Beta (float): Portfolio beta relative to S&P 500
-            - VaR (float): Value at Risk at 95% confidence level
-
-    Raises:
-        ValueError: If unable to calculate metrics due to invalid data.
+        dict: 包含计算出的各项指标
     """
     metrics = {}
     portfolio_returns = calculate_portfolio_returns(processed_data, portfolio_weights)
@@ -190,16 +164,22 @@ def calculate_portfolio_metrics(processed_data, portfolio_weights):
     metrics['Volatility'] = calculate_portfolio_volatility(portfolio_returns)
     metrics['Sharpe Ratio'] = calculate_sharpe_ratio(portfolio_returns)
     
-    # Fetch benchmark data
-    benchmark_data = fetch_stock_data(['^GSPC'], portfolio_returns.index[0], portfolio_returns.index[-1])
-    benchmark_returns = benchmark_data['^GSPC']['Adj Close'].pct_change().dropna()
+    # 获取基准数据并处理
+    try:
+        benchmark_data = fetch_stock_data(['^GSPC'], portfolio_returns.index[0], portfolio_returns.index[-1])
+        benchmark_prices = benchmark_data['^GSPC'].get('Close', benchmark_data['^GSPC']['Adj Close'])
+        benchmark_returns = benchmark_prices.pct_change().dropna()
+        
+        # 对齐日期
+        aligned_returns = pd.concat([portfolio_returns, benchmark_returns], axis=1).dropna()
+        portfolio_returns_aligned = aligned_returns.iloc[:, 0]
+        benchmark_returns_aligned = aligned_returns.iloc[:, 1]
+        
+        metrics['Beta'] = calculate_beta(portfolio_returns_aligned, benchmark_returns_aligned)
+    except Exception as e:
+        metrics['Beta'] = None
+        logging.warning(f"无法计算 Beta: {str(e)}")
     
-    # Align dates
-    aligned_returns = pd.concat([portfolio_returns, benchmark_returns], axis=1).dropna()
-    portfolio_returns_aligned = aligned_returns.iloc[:, 0]
-    benchmark_returns_aligned = aligned_returns.iloc[:, 1]
-    
-    metrics['Beta'] = calculate_beta(portfolio_returns_aligned, benchmark_returns_aligned)
     metrics['VaR'] = calculate_var(portfolio_returns)
     
     return metrics

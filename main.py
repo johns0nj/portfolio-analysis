@@ -54,8 +54,6 @@ def main():
         logger.debug("Processing stock data...")
         processed_data = process_stock_data(raw_data)
 
-        print(processed_data.head())
-
         # Calculate metrics
         logger.debug("Calculating portfolio metrics...")
         metrics = calculate_portfolio_metrics(processed_data, portfolio)
@@ -63,7 +61,10 @@ def main():
         
         logger.info("Portfolio Metrics:")
         for key, value in metrics.items():
-            logger.info(f"{key}: {value:.4f}")
+            if value is None:
+                logger.info(f"{key}: Not available")
+            else:
+                logger.info(f"{key}: {value:.4f}")
 
         # Visualizations
         logger.debug("Generating visualizations...")
