@@ -4,6 +4,7 @@ import pandas as pd
 import numpy as np
 import seaborn as sns
 import logging
+from matplotlib.widgets import CheckButtons
 
 """
 Module for creating portfolio analysis visualizations.
@@ -20,25 +21,77 @@ def plot_portfolio_performance(portfolio_returns, benchmark_returns=None):
         portfolio_returns (pd.Series): 投资组合收益率
         benchmark_returns (pd.Series, optional): 基准收益率
     """
-    plt.figure(figsize=(12, 6))
+    # 创建图表和布局
+    fig = plt.figure(figsize=(15, 8))  # 加宽图表
+    
+    # 创建主图表，并为右侧留出空间
+    ax = plt.axes([0.1, 0.1, 0.7, 0.8])  # [left, bottom, width, height]
     
     # 计算累积收益
     portfolio_cumulative = (1 + portfolio_returns).cumprod()
-    plt.plot(portfolio_cumulative.index, portfolio_cumulative.values, 
-            label='Portfolio', linewidth=2)
+    portfolio_line, = ax.plot(portfolio_cumulative.index, portfolio_cumulative.values, 
+                            label='Portfolio', linewidth=2)
     
+    benchmark_line = None
     if benchmark_returns is not None:
         benchmark_cumulative = (1 + benchmark_returns).cumprod()
-        plt.plot(benchmark_cumulative.index, benchmark_cumulative.values, 
-                label='S&P 500', linewidth=2, linestyle='--')
+        benchmark_line, = ax.plot(benchmark_cumulative.index, benchmark_cumulative.values, 
+                                label='S&P 500', linewidth=2, linestyle='--')
     
-    plt.title('Portfolio Performance vs Benchmark')
-    plt.xlabel('Date')
-    plt.ylabel('Cumulative Return')
-    plt.grid(True)
-    plt.legend()
-    plt.tight_layout()
-    plt.savefig('portfolio_performance.png')
+    # 设置主图表属性
+    ax.set_title('Portfolio Performance vs Benchmark')
+    ax.set_xlabel('Date')
+    ax.set_ylabel('Cumulative Return')
+    ax.grid(True)
+    ax.legend()
+    
+    # 创建多选框数据
+    lines = [portfolio_line]
+    labels = ['Portfolio']
+    visibility = [True]
+    
+    if benchmark_line is not None:
+        lines.append(benchmark_line)
+        labels.append('S&P 500')
+        visibility.append(True)
+    
+    # 创建多选框，放在右侧空白处
+    rax = plt.axes([0.85, 0.4, 0.1, 0.2])  # [left, bottom, width, height]
+    rax.set_frame_on(False)  # 移除边框
+    rax.set_xticks([])  # 移除刻度
+    rax.set_yticks([])
+    
+    # 创建多选框
+    check = CheckButtons(rax, labels, visibility)
+    
+    # 自定义多选框样式
+    try:
+        for rect in check.rectangles:
+            rect.set_facecolor('lightgray')
+            rect.set_alpha(0.3)
+    except AttributeError:
+        try:
+            for rect in check.boxes:
+                rect.set_facecolor('lightgray')
+                rect.set_alpha(0.3)
+        except AttributeError:
+            pass
+    
+    # 定义多选框回调函数
+    def func(label):
+        index = labels.index(label)
+        lines[index].set_visible(not lines[index].get_visible())
+        plt.draw()
+    
+    check.on_clicked(func)
+    
+    # 保存图片前确保所有元素都可见
+    for line in lines:
+        line.set_visible(True)
+    
+    # 保存和显示
+    plt.savefig('portfolio_performance.png', bbox_inches='tight')
+    plt.show()
     plt.close()
 
 def plot_efficient_frontier(processed_data, num_portfolios=5000, risk_free_rate=0.01):

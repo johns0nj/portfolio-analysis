@@ -683,3 +683,410 @@ Traceback (most recent call last):
   File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\internals\construction.py", line 667, in _extract_index
     raise ValueError("If using all scalar values, you must pass an index")
 ValueError: If using all scalar values, you must pass an index
+2025-01-27 23:11:54,464 - portfolio_analyzer - INFO - Starting portfolio analysis
+2025-01-27 23:11:54,465 - portfolio_analyzer - INFO - Analyzing portfolio: {'AAPL': 0.4, 'MSFT': 0.3, 'GOOGL': 0.3}
+2025-01-27 23:11:54,465 - portfolio_analyzer - INFO - Time period: 2020-01-01 to 2024-12-31
+2025-01-27 23:11:54,466 - portfolio_analyzer - DEBUG - Fetching stock data...
+2025-01-27 23:11:55,945 - portfolio_analyzer - DEBUG - Fetching benchmark data...
+2025-01-27 23:11:56,182 - portfolio_analyzer - DEBUG - Processing stock data...
+2025-01-27 23:11:56,183 - portfolio_analyzer - DEBUG - Calculating portfolio metrics...
+2025-01-27 23:11:56,495 - portfolio_analyzer - WARNING - 计算相对基准表现时出错: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2025-01-27 23:11:56,496 - portfolio_analyzer - INFO - Portfolio Metrics:
+2025-01-27 23:11:56,497 - portfolio_analyzer - INFO - Expected Return: 0.2730
+2025-01-27 23:11:56,497 - portfolio_analyzer - INFO - Volatility: 0.2840
+2025-01-27 23:11:56,498 - portfolio_analyzer - INFO - Sharpe Ratio: 0.9259
+2025-01-27 23:11:56,498 - portfolio_analyzer - INFO - Beta: 1.1613
+2025-01-27 23:11:56,498 - portfolio_analyzer - INFO - VaR: nan
+2025-01-27 23:11:56,499 - portfolio_analyzer - INFO - Excess Return: Not available
+2025-01-27 23:11:56,499 - portfolio_analyzer - INFO - Tracking Error: Not available
+2025-01-27 23:11:56,499 - portfolio_analyzer - INFO - Information Ratio: Not available
+2025-01-27 23:11:56,500 - portfolio_analyzer - DEBUG - Generating visualizations...
+2025-01-27 23:11:57,056 - portfolio_analyzer - DEBUG - 生成有效前沿，模拟 5000 个组合
+2025-01-27 23:11:58,087 - portfolio_analyzer - DEBUG - Efficient frontier plot generated successfully
+2025-01-27 23:12:34,032 - portfolio_analyzer - DEBUG - Running Monte Carlo simulation...
+2025-01-27 23:12:34,033 - portfolio_analyzer - INFO - 开始蒙特卡洛模拟，模拟次数：1000
+2025-01-27 23:12:34,033 - portfolio_analyzer - ERROR - 蒙特卡洛模拟出错: If using all scalar values, you must pass an index
+2025-01-27 23:12:34,033 - portfolio_analyzer - ERROR - An error occurred during portfolio analysis: If using all scalar values, you must pass an index
+Traceback (most recent call last):
+  File "C:\Users\zougu\OneDrive\main\Dell NB\portfolio_analysis\main.py", line 105, in main
+    simulation_results = monte_carlo_simulation(processed_data, portfolio)
+  File "C:\Users\zougu\OneDrive\main\Dell NB\portfolio_analysis\calculations.py", line 126, in monte_carlo_simulation
+    price_data = pd.DataFrame(processed_data)
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\frame.py", line 778, in __init__
+    mgr = dict_to_mgr(data, index, columns, dtype=dtype, copy=copy, typ=manager)
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\internals\construction.py", line 503, in dict_to_mgr
+    return arrays_to_mgr(arrays, columns, index, dtype=dtype, typ=typ, consolidate=copy)
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\internals\construction.py", line 114, in arrays_to_mgr
+    index = _extract_index(arrays)
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\internals\construction.py", line 667, in _extract_index
+    raise ValueError("If using all scalar values, you must pass an index")
+ValueError: If using all scalar values, you must pass an index
+2025-01-27 23:15:29,418 - portfolio_analyzer - INFO - Starting portfolio analysis
+2025-01-27 23:15:29,418 - portfolio_analyzer - INFO - Analyzing portfolio: {'AAPL': 0.4, 'MSFT': 0.3, 'GOOGL': 0.3}
+2025-01-27 23:15:29,419 - portfolio_analyzer - INFO - Time period: 2020-01-01 to 2024-12-31
+2025-01-27 23:15:29,419 - portfolio_analyzer - DEBUG - Fetching stock data...
+2025-01-27 23:15:30,953 - portfolio_analyzer - DEBUG - Fetching benchmark data...
+2025-01-27 23:15:31,129 - portfolio_analyzer - DEBUG - Processing stock data...
+2025-01-27 23:15:31,131 - portfolio_analyzer - DEBUG - Calculating portfolio metrics...
+2025-01-27 23:15:31,405 - portfolio_analyzer - WARNING - 计算相对基准表现时出错: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2025-01-27 23:15:31,405 - portfolio_analyzer - INFO - Portfolio Metrics:
+2025-01-27 23:15:31,406 - portfolio_analyzer - INFO - Expected Return: 0.2730
+2025-01-27 23:15:31,406 - portfolio_analyzer - INFO - Volatility: 0.2840
+2025-01-27 23:15:31,406 - portfolio_analyzer - INFO - Sharpe Ratio: 0.9259
+2025-01-27 23:15:31,407 - portfolio_analyzer - INFO - Beta: 1.1613
+2025-01-27 23:15:31,407 - portfolio_analyzer - INFO - VaR: nan
+2025-01-27 23:15:31,407 - portfolio_analyzer - INFO - Excess Return: Not available
+2025-01-27 23:15:31,408 - portfolio_analyzer - INFO - Tracking Error: Not available
+2025-01-27 23:15:31,408 - portfolio_analyzer - INFO - Information Ratio: Not available
+2025-01-27 23:15:31,408 - portfolio_analyzer - DEBUG - Generating visualizations...
+2025-01-27 23:15:31,963 - portfolio_analyzer - DEBUG - 生成有效前沿，模拟 5000 个组合
+2025-01-27 23:15:32,966 - portfolio_analyzer - DEBUG - Efficient frontier plot generated successfully
+2025-01-27 23:15:37,796 - portfolio_analyzer - DEBUG - Running Monte Carlo simulation...
+2025-01-27 23:15:37,796 - portfolio_analyzer - INFO - 开始蒙特卡洛模拟，模拟次数：1000
+2025-01-27 23:15:37,797 - portfolio_analyzer - ERROR - 蒙特卡洛模拟出错: If using all scalar values, you must pass an index
+2025-01-27 23:15:37,797 - portfolio_analyzer - ERROR - An error occurred during portfolio analysis: If using all scalar values, you must pass an index
+Traceback (most recent call last):
+  File "C:\Users\zougu\OneDrive\main\Dell NB\portfolio_analysis\main.py", line 105, in main
+    simulation_results = monte_carlo_simulation(processed_data, portfolio)
+  File "C:\Users\zougu\OneDrive\main\Dell NB\portfolio_analysis\calculations.py", line 126, in monte_carlo_simulation
+    price_data = pd.DataFrame(processed_data)
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\frame.py", line 778, in __init__
+    mgr = dict_to_mgr(data, index, columns, dtype=dtype, copy=copy, typ=manager)
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\internals\construction.py", line 503, in dict_to_mgr
+    return arrays_to_mgr(arrays, columns, index, dtype=dtype, typ=typ, consolidate=copy)
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\internals\construction.py", line 114, in arrays_to_mgr
+    index = _extract_index(arrays)
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\internals\construction.py", line 667, in _extract_index
+    raise ValueError("If using all scalar values, you must pass an index")
+ValueError: If using all scalar values, you must pass an index
+2025-01-27 23:20:31,460 - portfolio_analyzer - INFO - Starting portfolio analysis
+2025-01-27 23:20:31,461 - portfolio_analyzer - INFO - Analyzing portfolio: {'AAPL': 0.4, 'MSFT': 0.3, 'GOOGL': 0.3}
+2025-01-27 23:20:31,461 - portfolio_analyzer - INFO - Time period: 2020-01-01 to 2024-12-31
+2025-01-27 23:20:31,462 - portfolio_analyzer - DEBUG - Fetching stock data...
+2025-01-27 23:20:32,912 - portfolio_analyzer - DEBUG - Fetching benchmark data...
+2025-01-27 23:20:33,181 - portfolio_analyzer - DEBUG - Processing stock data...
+2025-01-27 23:20:33,182 - portfolio_analyzer - DEBUG - Calculating portfolio metrics...
+2025-01-27 23:20:33,441 - portfolio_analyzer - WARNING - 计算相对基准表现时出错: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2025-01-27 23:20:33,442 - portfolio_analyzer - INFO - Portfolio Metrics:
+2025-01-27 23:20:33,442 - portfolio_analyzer - INFO - Expected Return: 0.2730
+2025-01-27 23:20:33,442 - portfolio_analyzer - INFO - Volatility: 0.2840
+2025-01-27 23:20:33,443 - portfolio_analyzer - INFO - Sharpe Ratio: 0.9259
+2025-01-27 23:20:33,443 - portfolio_analyzer - INFO - Beta: 1.1613
+2025-01-27 23:20:33,443 - portfolio_analyzer - INFO - VaR: nan
+2025-01-27 23:20:33,444 - portfolio_analyzer - INFO - Excess Return: Not available
+2025-01-27 23:20:33,444 - portfolio_analyzer - INFO - Tracking Error: Not available
+2025-01-27 23:20:33,444 - portfolio_analyzer - INFO - Information Ratio: Not available
+2025-01-27 23:20:33,444 - portfolio_analyzer - DEBUG - Generating visualizations...
+2025-01-27 23:20:34,000 - portfolio_analyzer - DEBUG - 生成有效前沿，模拟 5000 个组合
+2025-01-27 23:20:34,974 - portfolio_analyzer - DEBUG - Efficient frontier plot generated successfully
+2025-01-27 23:20:45,589 - portfolio_analyzer - DEBUG - Running Monte Carlo simulation...
+2025-01-27 23:20:45,589 - portfolio_analyzer - INFO - 开始蒙特卡洛模拟，模拟次数：1000
+2025-01-27 23:20:45,590 - portfolio_analyzer - ERROR - 蒙特卡洛模拟出错: If using all scalar values, you must pass an index
+2025-01-27 23:20:45,591 - portfolio_analyzer - ERROR - An error occurred during portfolio analysis: If using all scalar values, you must pass an index
+Traceback (most recent call last):
+  File "C:\Users\zougu\OneDrive\main\Dell NB\portfolio_analysis\main.py", line 105, in main
+    simulation_results = monte_carlo_simulation(processed_data, portfolio)
+  File "C:\Users\zougu\OneDrive\main\Dell NB\portfolio_analysis\calculations.py", line 126, in monte_carlo_simulation
+    price_data = pd.DataFrame(processed_data)
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\frame.py", line 778, in __init__
+    mgr = dict_to_mgr(data, index, columns, dtype=dtype, copy=copy, typ=manager)
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\internals\construction.py", line 503, in dict_to_mgr
+    return arrays_to_mgr(arrays, columns, index, dtype=dtype, typ=typ, consolidate=copy)
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\internals\construction.py", line 114, in arrays_to_mgr
+    index = _extract_index(arrays)
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\internals\construction.py", line 667, in _extract_index
+    raise ValueError("If using all scalar values, you must pass an index")
+ValueError: If using all scalar values, you must pass an index
+2025-01-28 16:48:14,060 - portfolio_analyzer - INFO - Starting portfolio analysis
+2025-01-28 16:48:14,062 - portfolio_analyzer - INFO - Analyzing portfolio: {'AAPL': 0.4, 'MSFT': 0.3, 'GOOGL': 0.3}
+2025-01-28 16:48:14,062 - portfolio_analyzer - INFO - Time period: 2020-01-01 to 2024-12-31
+2025-01-28 16:48:14,062 - portfolio_analyzer - DEBUG - Fetching stock data...
+2025-01-28 16:48:15,750 - portfolio_analyzer - DEBUG - Fetching benchmark data...
+2025-01-28 16:48:15,919 - portfolio_analyzer - DEBUG - Processing stock data...
+2025-01-28 16:48:15,921 - portfolio_analyzer - DEBUG - Calculating portfolio metrics...
+2025-01-28 16:48:16,188 - portfolio_analyzer - WARNING - 计算相对基准表现时出错: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2025-01-28 16:48:16,190 - portfolio_analyzer - INFO - Portfolio Metrics:
+2025-01-28 16:48:16,191 - portfolio_analyzer - INFO - Expected Return: 0.2730
+2025-01-28 16:48:16,191 - portfolio_analyzer - INFO - Volatility: 0.2840
+2025-01-28 16:48:16,191 - portfolio_analyzer - INFO - Sharpe Ratio: 0.9259
+2025-01-28 16:48:16,192 - portfolio_analyzer - INFO - Beta: 1.1613
+2025-01-28 16:48:16,192 - portfolio_analyzer - INFO - VaR: nan
+2025-01-28 16:48:16,193 - portfolio_analyzer - INFO - Excess Return: Not available
+2025-01-28 16:48:16,193 - portfolio_analyzer - INFO - Tracking Error: Not available
+2025-01-28 16:48:16,193 - portfolio_analyzer - INFO - Information Ratio: Not available
+2025-01-28 16:48:16,194 - portfolio_analyzer - DEBUG - Generating visualizations...
+2025-01-28 16:48:16,809 - portfolio_analyzer - DEBUG - 生成有效前沿，模拟 5000 个组合
+2025-01-28 16:48:17,871 - portfolio_analyzer - DEBUG - Efficient frontier plot generated successfully
+2025-01-28 16:48:33,836 - portfolio_analyzer - DEBUG - Running Monte Carlo simulation...
+2025-01-28 16:48:33,837 - portfolio_analyzer - INFO - 开始蒙特卡洛模拟，模拟次数：1000
+2025-01-28 16:48:33,837 - portfolio_analyzer - ERROR - 蒙特卡洛模拟出错: If using all scalar values, you must pass an index
+2025-01-28 16:48:33,837 - portfolio_analyzer - ERROR - An error occurred during portfolio analysis: If using all scalar values, you must pass an index
+Traceback (most recent call last):
+  File "C:\Users\zougu\OneDrive\main\Dell NB\portfolio_analysis\main.py", line 105, in main
+    simulation_results = monte_carlo_simulation(processed_data, portfolio)
+  File "C:\Users\zougu\OneDrive\main\Dell NB\portfolio_analysis\calculations.py", line 126, in monte_carlo_simulation
+    price_data = pd.DataFrame(processed_data)
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\frame.py", line 778, in __init__
+    mgr = dict_to_mgr(data, index, columns, dtype=dtype, copy=copy, typ=manager)
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\internals\construction.py", line 503, in dict_to_mgr
+    return arrays_to_mgr(arrays, columns, index, dtype=dtype, typ=typ, consolidate=copy)
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\internals\construction.py", line 114, in arrays_to_mgr
+    index = _extract_index(arrays)
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\internals\construction.py", line 667, in _extract_index
+    raise ValueError("If using all scalar values, you must pass an index")
+ValueError: If using all scalar values, you must pass an index
+2025-01-28 16:52:40,556 - portfolio_analyzer - INFO - Starting portfolio analysis
+2025-01-28 16:52:40,557 - portfolio_analyzer - INFO - Analyzing portfolio: {'AAPL': 0.4, 'MSFT': 0.3, 'GOOGL': 0.3}
+2025-01-28 16:52:40,557 - portfolio_analyzer - INFO - Time period: 2020-01-01 to 2024-12-31
+2025-01-28 16:52:40,558 - portfolio_analyzer - DEBUG - Fetching stock data...
+2025-01-28 16:52:42,075 - portfolio_analyzer - DEBUG - Fetching benchmark data...
+2025-01-28 16:52:42,349 - portfolio_analyzer - DEBUG - Processing stock data...
+2025-01-28 16:52:42,350 - portfolio_analyzer - DEBUG - Calculating portfolio metrics...
+2025-01-28 16:52:42,648 - portfolio_analyzer - WARNING - 计算相对基准表现时出错: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2025-01-28 16:52:42,648 - portfolio_analyzer - INFO - Portfolio Metrics:
+2025-01-28 16:52:42,649 - portfolio_analyzer - INFO - Expected Return: 0.2730
+2025-01-28 16:52:42,649 - portfolio_analyzer - INFO - Volatility: 0.2840
+2025-01-28 16:52:42,649 - portfolio_analyzer - INFO - Sharpe Ratio: 0.9259
+2025-01-28 16:52:42,650 - portfolio_analyzer - INFO - Beta: 1.1613
+2025-01-28 16:52:42,650 - portfolio_analyzer - INFO - VaR: nan
+2025-01-28 16:52:42,650 - portfolio_analyzer - INFO - Excess Return: Not available
+2025-01-28 16:52:42,650 - portfolio_analyzer - INFO - Tracking Error: Not available
+2025-01-28 16:52:42,651 - portfolio_analyzer - INFO - Information Ratio: Not available
+2025-01-28 16:52:42,651 - portfolio_analyzer - DEBUG - Generating visualizations...
+2025-01-28 16:52:53,127 - portfolio_analyzer - DEBUG - 生成有效前沿，模拟 5000 个组合
+2025-01-28 16:52:54,186 - portfolio_analyzer - DEBUG - Efficient frontier plot generated successfully
+2025-01-28 16:52:56,999 - portfolio_analyzer - DEBUG - Running Monte Carlo simulation...
+2025-01-28 16:52:56,999 - portfolio_analyzer - INFO - 开始蒙特卡洛模拟，模拟次数：1000
+2025-01-28 16:52:56,999 - portfolio_analyzer - ERROR - 蒙特卡洛模拟出错: If using all scalar values, you must pass an index
+2025-01-28 16:52:57,000 - portfolio_analyzer - ERROR - An error occurred during portfolio analysis: If using all scalar values, you must pass an index
+Traceback (most recent call last):
+  File "C:\Users\zougu\OneDrive\main\Dell NB\portfolio_analysis\main.py", line 105, in main
+    simulation_results = monte_carlo_simulation(processed_data, portfolio)
+  File "C:\Users\zougu\OneDrive\main\Dell NB\portfolio_analysis\calculations.py", line 126, in monte_carlo_simulation
+    price_data = pd.DataFrame(processed_data)
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\frame.py", line 778, in __init__
+    mgr = dict_to_mgr(data, index, columns, dtype=dtype, copy=copy, typ=manager)
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\internals\construction.py", line 503, in dict_to_mgr
+    return arrays_to_mgr(arrays, columns, index, dtype=dtype, typ=typ, consolidate=copy)
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\internals\construction.py", line 114, in arrays_to_mgr
+    index = _extract_index(arrays)
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\internals\construction.py", line 667, in _extract_index
+    raise ValueError("If using all scalar values, you must pass an index")
+ValueError: If using all scalar values, you must pass an index
+2025-01-28 16:53:04,733 - portfolio_analyzer - INFO - Starting portfolio analysis
+2025-01-28 16:53:04,734 - portfolio_analyzer - INFO - Analyzing portfolio: {'AAPL': 0.4, 'MSFT': 0.3, 'GOOGL': 0.3}
+2025-01-28 16:53:04,734 - portfolio_analyzer - INFO - Time period: 2020-01-01 to 2024-12-31
+2025-01-28 16:53:04,735 - portfolio_analyzer - DEBUG - Fetching stock data...
+2025-01-28 16:53:06,111 - portfolio_analyzer - DEBUG - Fetching benchmark data...
+2025-01-28 16:53:06,317 - portfolio_analyzer - DEBUG - Processing stock data...
+2025-01-28 16:53:06,319 - portfolio_analyzer - DEBUG - Calculating portfolio metrics...
+2025-01-28 16:53:06,600 - portfolio_analyzer - WARNING - 计算相对基准表现时出错: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2025-01-28 16:53:06,601 - portfolio_analyzer - INFO - Portfolio Metrics:
+2025-01-28 16:53:06,601 - portfolio_analyzer - INFO - Expected Return: 0.2730
+2025-01-28 16:53:06,601 - portfolio_analyzer - INFO - Volatility: 0.2840
+2025-01-28 16:53:06,601 - portfolio_analyzer - INFO - Sharpe Ratio: 0.9259
+2025-01-28 16:53:06,601 - portfolio_analyzer - INFO - Beta: 1.1613
+2025-01-28 16:53:06,602 - portfolio_analyzer - INFO - VaR: nan
+2025-01-28 16:53:06,602 - portfolio_analyzer - INFO - Excess Return: Not available
+2025-01-28 16:53:06,602 - portfolio_analyzer - INFO - Tracking Error: Not available
+2025-01-28 16:53:06,602 - portfolio_analyzer - INFO - Information Ratio: Not available
+2025-01-28 16:53:06,602 - portfolio_analyzer - DEBUG - Generating visualizations...
+2025-01-28 16:53:10,178 - portfolio_analyzer - DEBUG - 生成有效前沿，模拟 5000 个组合
+2025-01-28 16:53:11,204 - portfolio_analyzer - DEBUG - Efficient frontier plot generated successfully
+2025-01-28 16:53:14,419 - portfolio_analyzer - DEBUG - Running Monte Carlo simulation...
+2025-01-28 16:53:14,419 - portfolio_analyzer - INFO - 开始蒙特卡洛模拟，模拟次数：1000
+2025-01-28 16:53:14,419 - portfolio_analyzer - ERROR - 蒙特卡洛模拟出错: If using all scalar values, you must pass an index
+2025-01-28 16:53:14,419 - portfolio_analyzer - ERROR - An error occurred during portfolio analysis: If using all scalar values, you must pass an index
+Traceback (most recent call last):
+  File "C:\Users\zougu\OneDrive\main\Dell NB\portfolio_analysis\main.py", line 105, in main
+    simulation_results = monte_carlo_simulation(processed_data, portfolio)
+  File "C:\Users\zougu\OneDrive\main\Dell NB\portfolio_analysis\calculations.py", line 126, in monte_carlo_simulation
+    price_data = pd.DataFrame(processed_data)
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\frame.py", line 778, in __init__
+    mgr = dict_to_mgr(data, index, columns, dtype=dtype, copy=copy, typ=manager)
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\internals\construction.py", line 503, in dict_to_mgr
+    return arrays_to_mgr(arrays, columns, index, dtype=dtype, typ=typ, consolidate=copy)
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\internals\construction.py", line 114, in arrays_to_mgr
+    index = _extract_index(arrays)
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\internals\construction.py", line 667, in _extract_index
+    raise ValueError("If using all scalar values, you must pass an index")
+ValueError: If using all scalar values, you must pass an index
+2025-01-28 16:54:29,328 - portfolio_analyzer - INFO - Starting portfolio analysis
+2025-01-28 16:54:29,329 - portfolio_analyzer - INFO - Analyzing portfolio: {'AAPL': 0.4, 'MSFT': 0.3, 'GOOGL': 0.3}
+2025-01-28 16:54:29,329 - portfolio_analyzer - INFO - Time period: 2020-01-01 to 2024-12-31
+2025-01-28 16:54:29,330 - portfolio_analyzer - DEBUG - Fetching stock data...
+2025-01-28 16:54:30,753 - portfolio_analyzer - DEBUG - Fetching benchmark data...
+2025-01-28 16:54:30,966 - portfolio_analyzer - DEBUG - Processing stock data...
+2025-01-28 16:54:30,968 - portfolio_analyzer - DEBUG - Calculating portfolio metrics...
+2025-01-28 16:54:31,228 - portfolio_analyzer - WARNING - 计算相对基准表现时出错: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2025-01-28 16:54:31,228 - portfolio_analyzer - INFO - Portfolio Metrics:
+2025-01-28 16:54:31,229 - portfolio_analyzer - INFO - Expected Return: 0.2730
+2025-01-28 16:54:31,229 - portfolio_analyzer - INFO - Volatility: 0.2840
+2025-01-28 16:54:31,229 - portfolio_analyzer - INFO - Sharpe Ratio: 0.9259
+2025-01-28 16:54:31,229 - portfolio_analyzer - INFO - Beta: 1.1613
+2025-01-28 16:54:31,229 - portfolio_analyzer - INFO - VaR: nan
+2025-01-28 16:54:31,229 - portfolio_analyzer - INFO - Excess Return: Not available
+2025-01-28 16:54:31,230 - portfolio_analyzer - INFO - Tracking Error: Not available
+2025-01-28 16:54:31,230 - portfolio_analyzer - INFO - Information Ratio: Not available
+2025-01-28 16:54:31,230 - portfolio_analyzer - DEBUG - Generating visualizations...
+2025-01-28 16:54:31,484 - portfolio_analyzer - ERROR - An error occurred during portfolio analysis: 'CheckButtons' object has no attribute 'rectangles'
+Traceback (most recent call last):
+  File "C:\Users\zougu\OneDrive\main\Dell NB\portfolio_analysis\main.py", line 98, in main
+    plot_portfolio_performance(portfolio_returns, benchmark_returns)  # 添加基准对比
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\zougu\OneDrive\main\Dell NB\portfolio_analysis\visualization.py", line 60, in plot_portfolio_performance
+    for rect in check.rectangles:
+                ^^^^^^^^^^^^^^^^
+AttributeError: 'CheckButtons' object has no attribute 'rectangles'
+2025-01-28 16:55:27,239 - portfolio_analyzer - INFO - Starting portfolio analysis
+2025-01-28 16:55:27,240 - portfolio_analyzer - INFO - Analyzing portfolio: {'AAPL': 0.4, 'MSFT': 0.3, 'GOOGL': 0.3}
+2025-01-28 16:55:27,240 - portfolio_analyzer - INFO - Time period: 2020-01-01 to 2024-12-31
+2025-01-28 16:55:27,240 - portfolio_analyzer - DEBUG - Fetching stock data...
+2025-01-28 16:55:28,662 - portfolio_analyzer - DEBUG - Fetching benchmark data...
+2025-01-28 16:55:28,881 - portfolio_analyzer - DEBUG - Processing stock data...
+2025-01-28 16:55:28,883 - portfolio_analyzer - DEBUG - Calculating portfolio metrics...
+2025-01-28 16:55:29,136 - portfolio_analyzer - WARNING - 计算相对基准表现时出错: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2025-01-28 16:55:29,137 - portfolio_analyzer - INFO - Portfolio Metrics:
+2025-01-28 16:55:29,138 - portfolio_analyzer - INFO - Expected Return: 0.2730
+2025-01-28 16:55:29,138 - portfolio_analyzer - INFO - Volatility: 0.2840
+2025-01-28 16:55:29,139 - portfolio_analyzer - INFO - Sharpe Ratio: 0.9259
+2025-01-28 16:55:29,139 - portfolio_analyzer - INFO - Beta: 1.1613
+2025-01-28 16:55:29,140 - portfolio_analyzer - INFO - VaR: nan
+2025-01-28 16:55:29,140 - portfolio_analyzer - INFO - Excess Return: Not available
+2025-01-28 16:55:29,140 - portfolio_analyzer - INFO - Tracking Error: Not available
+2025-01-28 16:55:29,141 - portfolio_analyzer - INFO - Information Ratio: Not available
+2025-01-28 16:55:29,141 - portfolio_analyzer - DEBUG - Generating visualizations...
+2025-01-28 16:55:36,718 - portfolio_analyzer - DEBUG - 生成有效前沿，模拟 5000 个组合
+2025-01-28 16:55:37,760 - portfolio_analyzer - DEBUG - Efficient frontier plot generated successfully
+2025-01-28 16:55:40,070 - portfolio_analyzer - DEBUG - Running Monte Carlo simulation...
+2025-01-28 16:55:40,070 - portfolio_analyzer - INFO - 开始蒙特卡洛模拟，模拟次数：1000
+2025-01-28 16:55:40,071 - portfolio_analyzer - ERROR - 蒙特卡洛模拟出错: If using all scalar values, you must pass an index
+2025-01-28 16:55:40,071 - portfolio_analyzer - ERROR - An error occurred during portfolio analysis: If using all scalar values, you must pass an index
+Traceback (most recent call last):
+  File "C:\Users\zougu\OneDrive\main\Dell NB\portfolio_analysis\main.py", line 105, in main
+    simulation_results = monte_carlo_simulation(processed_data, portfolio)
+  File "C:\Users\zougu\OneDrive\main\Dell NB\portfolio_analysis\calculations.py", line 126, in monte_carlo_simulation
+    price_data = pd.DataFrame(processed_data)
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\frame.py", line 778, in __init__
+    mgr = dict_to_mgr(data, index, columns, dtype=dtype, copy=copy, typ=manager)
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\internals\construction.py", line 503, in dict_to_mgr
+    return arrays_to_mgr(arrays, columns, index, dtype=dtype, typ=typ, consolidate=copy)
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\internals\construction.py", line 114, in arrays_to_mgr
+    index = _extract_index(arrays)
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\internals\construction.py", line 667, in _extract_index
+    raise ValueError("If using all scalar values, you must pass an index")
+ValueError: If using all scalar values, you must pass an index
+2025-01-28 17:01:17,237 - portfolio_analyzer - INFO - Starting portfolio analysis
+2025-01-28 17:01:17,237 - portfolio_analyzer - INFO - Analyzing portfolio: {'AAPL': 0.4, 'MSFT': 0.3, 'GOOGL': 0.3}
+2025-01-28 17:01:17,238 - portfolio_analyzer - INFO - Time period: 2020-01-01 to 2024-12-31
+2025-01-28 17:01:17,238 - portfolio_analyzer - DEBUG - Fetching stock data...
+2025-01-28 17:01:18,770 - portfolio_analyzer - DEBUG - Fetching benchmark data...
+2025-01-28 17:01:18,958 - portfolio_analyzer - DEBUG - Processing stock data...
+2025-01-28 17:01:18,959 - portfolio_analyzer - DEBUG - Calculating portfolio metrics...
+2025-01-28 17:01:19,260 - portfolio_analyzer - WARNING - 计算相对基准表现时出错: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2025-01-28 17:01:19,260 - portfolio_analyzer - INFO - Portfolio Metrics:
+2025-01-28 17:01:19,261 - portfolio_analyzer - INFO - Expected Return: 0.2730
+2025-01-28 17:01:19,261 - portfolio_analyzer - INFO - Volatility: 0.2840
+2025-01-28 17:01:19,261 - portfolio_analyzer - INFO - Sharpe Ratio: 0.9259
+2025-01-28 17:01:19,262 - portfolio_analyzer - INFO - Beta: 1.1613
+2025-01-28 17:01:19,262 - portfolio_analyzer - INFO - VaR: nan
+2025-01-28 17:01:19,262 - portfolio_analyzer - INFO - Excess Return: Not available
+2025-01-28 17:01:19,263 - portfolio_analyzer - INFO - Tracking Error: Not available
+2025-01-28 17:01:19,263 - portfolio_analyzer - INFO - Information Ratio: Not available
+2025-01-28 17:01:19,263 - portfolio_analyzer - DEBUG - Generating visualizations...
+2025-01-28 17:01:28,247 - portfolio_analyzer - DEBUG - 生成有效前沿，模拟 5000 个组合
+2025-01-28 17:01:29,256 - portfolio_analyzer - DEBUG - Efficient frontier plot generated successfully
+2025-01-28 17:01:32,488 - portfolio_analyzer - DEBUG - Running Monte Carlo simulation...
+2025-01-28 17:01:32,489 - portfolio_analyzer - INFO - 开始蒙特卡洛模拟，模拟次数：1000
+2025-01-28 17:01:32,489 - portfolio_analyzer - ERROR - 蒙特卡洛模拟出错: If using all scalar values, you must pass an index
+2025-01-28 17:01:32,490 - portfolio_analyzer - ERROR - An error occurred during portfolio analysis: If using all scalar values, you must pass an index
+Traceback (most recent call last):
+  File "C:\Users\zougu\OneDrive\main\Dell NB\portfolio_analysis\main.py", line 105, in main
+    simulation_results = monte_carlo_simulation(processed_data, portfolio)
+  File "C:\Users\zougu\OneDrive\main\Dell NB\portfolio_analysis\calculations.py", line 126, in monte_carlo_simulation
+    price_data = pd.DataFrame(processed_data)
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\frame.py", line 778, in __init__
+    mgr = dict_to_mgr(data, index, columns, dtype=dtype, copy=copy, typ=manager)
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\internals\construction.py", line 503, in dict_to_mgr
+    return arrays_to_mgr(arrays, columns, index, dtype=dtype, typ=typ, consolidate=copy)
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\internals\construction.py", line 114, in arrays_to_mgr
+    index = _extract_index(arrays)
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\internals\construction.py", line 667, in _extract_index
+    raise ValueError("If using all scalar values, you must pass an index")
+ValueError: If using all scalar values, you must pass an index
+2025-01-28 17:02:42,671 - portfolio_analyzer - INFO - Starting portfolio analysis
+2025-01-28 17:02:42,671 - portfolio_analyzer - INFO - Analyzing portfolio: {'AAPL': 0.4, 'MSFT': 0.3, 'GOOGL': 0.3}
+2025-01-28 17:02:42,672 - portfolio_analyzer - INFO - Time period: 2020-01-01 to 2024-12-31
+2025-01-28 17:02:42,672 - portfolio_analyzer - DEBUG - Fetching stock data...
+2025-01-28 17:02:44,288 - portfolio_analyzer - DEBUG - Fetching benchmark data...
+2025-01-28 17:02:44,545 - portfolio_analyzer - DEBUG - Processing stock data...
+2025-01-28 17:02:44,546 - portfolio_analyzer - DEBUG - Calculating portfolio metrics...
+2025-01-28 17:02:44,844 - portfolio_analyzer - WARNING - 计算相对基准表现时出错: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2025-01-28 17:02:44,844 - portfolio_analyzer - INFO - Portfolio Metrics:
+2025-01-28 17:02:44,845 - portfolio_analyzer - INFO - Expected Return: 0.2730
+2025-01-28 17:02:44,845 - portfolio_analyzer - INFO - Volatility: 0.2840
+2025-01-28 17:02:44,846 - portfolio_analyzer - INFO - Sharpe Ratio: 0.9259
+2025-01-28 17:02:44,846 - portfolio_analyzer - INFO - Beta: 1.1613
+2025-01-28 17:02:44,846 - portfolio_analyzer - INFO - VaR: nan
+2025-01-28 17:02:44,846 - portfolio_analyzer - INFO - Excess Return: Not available
+2025-01-28 17:02:44,847 - portfolio_analyzer - INFO - Tracking Error: Not available
+2025-01-28 17:02:44,847 - portfolio_analyzer - INFO - Information Ratio: Not available
+2025-01-28 17:02:44,847 - portfolio_analyzer - DEBUG - Generating visualizations...
+2025-01-28 17:04:32,908 - portfolio_analyzer - DEBUG - 生成有效前沿，模拟 5000 个组合
+2025-01-28 17:04:33,924 - portfolio_analyzer - DEBUG - Efficient frontier plot generated successfully
+2025-01-28 17:04:36,935 - portfolio_analyzer - DEBUG - Running Monte Carlo simulation...
+2025-01-28 17:04:36,935 - portfolio_analyzer - INFO - 开始蒙特卡洛模拟，模拟次数：1000
+2025-01-28 17:04:36,936 - portfolio_analyzer - ERROR - 蒙特卡洛模拟出错: If using all scalar values, you must pass an index
+2025-01-28 17:04:36,936 - portfolio_analyzer - ERROR - An error occurred during portfolio analysis: If using all scalar values, you must pass an index
+Traceback (most recent call last):
+  File "C:\Users\zougu\OneDrive\main\Dell NB\portfolio_analysis\main.py", line 105, in main
+    simulation_results = monte_carlo_simulation(processed_data, portfolio)
+  File "C:\Users\zougu\OneDrive\main\Dell NB\portfolio_analysis\calculations.py", line 126, in monte_carlo_simulation
+    price_data = pd.DataFrame(processed_data)
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\frame.py", line 778, in __init__
+    mgr = dict_to_mgr(data, index, columns, dtype=dtype, copy=copy, typ=manager)
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\internals\construction.py", line 503, in dict_to_mgr
+    return arrays_to_mgr(arrays, columns, index, dtype=dtype, typ=typ, consolidate=copy)
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\internals\construction.py", line 114, in arrays_to_mgr
+    index = _extract_index(arrays)
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\internals\construction.py", line 667, in _extract_index
+    raise ValueError("If using all scalar values, you must pass an index")
+ValueError: If using all scalar values, you must pass an index
+2025-01-28 17:07:13,654 - portfolio_analyzer - INFO - Starting portfolio analysis
+2025-01-28 17:07:13,655 - portfolio_analyzer - INFO - Analyzing portfolio: {'AAPL': 0.4, 'MSFT': 0.3, 'GOOGL': 0.3}
+2025-01-28 17:07:13,655 - portfolio_analyzer - INFO - Time period: 2020-01-01 to 2024-12-31
+2025-01-28 17:07:13,656 - portfolio_analyzer - DEBUG - Fetching stock data...
+2025-01-28 17:07:15,208 - portfolio_analyzer - DEBUG - Fetching benchmark data...
+2025-01-28 17:07:15,460 - portfolio_analyzer - DEBUG - Processing stock data...
+2025-01-28 17:07:15,462 - portfolio_analyzer - DEBUG - Calculating portfolio metrics...
+2025-01-28 17:07:15,756 - portfolio_analyzer - WARNING - 计算相对基准表现时出错: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2025-01-28 17:07:15,756 - portfolio_analyzer - INFO - Portfolio Metrics:
+2025-01-28 17:07:15,757 - portfolio_analyzer - INFO - Expected Return: 0.2730
+2025-01-28 17:07:15,757 - portfolio_analyzer - INFO - Volatility: 0.2840
+2025-01-28 17:07:15,757 - portfolio_analyzer - INFO - Sharpe Ratio: 0.9259
+2025-01-28 17:07:15,758 - portfolio_analyzer - INFO - Beta: 1.1613
+2025-01-28 17:07:15,758 - portfolio_analyzer - INFO - VaR: nan
+2025-01-28 17:07:15,758 - portfolio_analyzer - INFO - Excess Return: Not available
+2025-01-28 17:07:15,758 - portfolio_analyzer - INFO - Tracking Error: Not available
+2025-01-28 17:07:15,759 - portfolio_analyzer - INFO - Information Ratio: Not available
+2025-01-28 17:07:15,759 - portfolio_analyzer - DEBUG - Generating visualizations...
+2025-01-28 17:10:23,783 - portfolio_analyzer - DEBUG - 生成有效前沿，模拟 5000 个组合
+2025-01-28 17:10:24,828 - portfolio_analyzer - DEBUG - Efficient frontier plot generated successfully
+2025-01-28 17:10:49,316 - portfolio_analyzer - DEBUG - Running Monte Carlo simulation...
+2025-01-28 17:10:49,316 - portfolio_analyzer - INFO - 开始蒙特卡洛模拟，模拟次数：1000
+2025-01-28 17:10:49,317 - portfolio_analyzer - ERROR - 蒙特卡洛模拟出错: If using all scalar values, you must pass an index
+2025-01-28 17:10:49,317 - portfolio_analyzer - ERROR - An error occurred during portfolio analysis: If using all scalar values, you must pass an index
+Traceback (most recent call last):
+  File "C:\Users\zougu\OneDrive\main\Dell NB\portfolio_analysis\main.py", line 105, in main
+    simulation_results = monte_carlo_simulation(processed_data, portfolio)
+  File "C:\Users\zougu\OneDrive\main\Dell NB\portfolio_analysis\calculations.py", line 126, in monte_carlo_simulation
+    price_data = pd.DataFrame(processed_data)
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\frame.py", line 778, in __init__
+    mgr = dict_to_mgr(data, index, columns, dtype=dtype, copy=copy, typ=manager)
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\internals\construction.py", line 503, in dict_to_mgr
+    return arrays_to_mgr(arrays, columns, index, dtype=dtype, typ=typ, consolidate=copy)
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\internals\construction.py", line 114, in arrays_to_mgr
+    index = _extract_index(arrays)
+  File "C:\Users\zougu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\internals\construction.py", line 667, in _extract_index
+    raise ValueError("If using all scalar values, you must pass an index")
+ValueError: If using all scalar values, you must pass an index
